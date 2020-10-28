@@ -16,10 +16,10 @@ public class user extends javax.swing.JFrame {
         datatable();
     }
     
-        //protected void aktif(){
-        //tukuran.setEnabled(true);
-        //tjumlahbahan.setEnabled(true);
-        //}
+        protected void aktif(){
+        b_simpan.setEnabled(true);
+        t_id.setEnabled(true);;
+        }
             
      protected void kosong(){
          t_id.setText("");
@@ -377,6 +377,7 @@ public class user extends javax.swing.JFrame {
 
             kosong();
             datatable();
+            aktif();
 
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Data GAGAL dihapus");
@@ -403,6 +404,7 @@ public class user extends javax.swing.JFrame {
 
             kosong();
             datatable();
+            aktif();
 
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Data GAGAL diubah");
