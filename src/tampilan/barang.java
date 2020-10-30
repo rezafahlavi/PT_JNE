@@ -29,14 +29,14 @@ public class barang extends javax.swing.JFrame {
          cb_payment.setSelectedIndex(0);
          t_origin.setText("");
          t_harga.setText("");
-         t_total.setText("");
+         //tgl t_total.setText("");
          cb_type.setSelectedIndex(0);
          t_kendala.setText("");
 
      }
      
      protected void datatable(){
-         Object[] Baris ={"ID","Nama","Jumlah","Berat","Payment","Origin","Harga","Total","Type","Kendala"};
+         Object[] Baris ={"ID","Nama","Jumlah","Berat","Payment","Origin","Harga","Tanggal","Type","Kendala"};
          tableModel = new DefaultTableModel (null, Baris);
          tbl_user.setModel(tableModel);
          String sql = "select * from barang";
@@ -51,7 +51,7 @@ public class barang extends javax.swing.JFrame {
              String e = hasil.getString("payment");
              String f = hasil.getString("origin");
              String g = hasil.getString("harga");
-             String h = hasil.getString("total");
+             String h = hasil.getString("tanggal");
              String i = hasil.getString("type");
              String j = hasil.getString("kendala");
              
@@ -74,6 +74,7 @@ public class barang extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         t_id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -89,7 +90,6 @@ public class barang extends javax.swing.JFrame {
         t_harga = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        t_total = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         cb_payment = new javax.swing.JComboBox<>();
@@ -102,6 +102,7 @@ public class barang extends javax.swing.JFrame {
         b_kembali = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_user = new javax.swing.JTable();
+        b_tgl = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,13 +111,22 @@ public class barang extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
         jLabel3.setText("DATA BARANG");
 
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Tanggal Input?");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(306, 306, 306)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(306, 306, 306)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel12)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,7 +134,9 @@ public class barang extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 255));
@@ -155,11 +167,11 @@ public class barang extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Harga Total");
+        jLabel8.setText("Tanggal");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Harga");
+        jLabel9.setText("Harga Ongkir");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,6 +240,8 @@ public class barang extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbl_user);
 
+        b_tgl.setDateFormatString("dd-mm-yyyy");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -261,10 +275,13 @@ public class barang extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(t_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(t_total, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(t_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(b_tgl, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
@@ -304,10 +321,10 @@ public class barang extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(t_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
-                            .addComponent(t_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(b_tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -372,6 +389,9 @@ public class barang extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_typeActionPerformed
 
     private void b_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_simpanActionPerformed
+        String tgl = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(tgl);
+        String tanggal = String.valueOf(fm.format(b_tgl.getDate()));
         try{
             String id = t_id.getText();
             String nama = t_nama.getText();
@@ -380,22 +400,25 @@ public class barang extends javax.swing.JFrame {
             String payment = cb_payment.getSelectedItem().toString();
             String origin = t_origin.getText();
             String harga = t_harga.getText();
-            String total = t_total.getText();
+            
             String type = cb_type.getSelectedItem().toString();
             String kendala = t_kendala.getText();
 
-            String sql="insert into barang (id,nama,jumlah,berat,payment,origin,harga,total,type,kendala)"
+            String sql="insert into barang (id,nama,jumlah,berat,payment,origin,harga,tanggal,type,kendala)"
             +"values"+"('"+id+"','"+nama+"','"+jumlah+"',"
             + "'"+berat+"','"+payment+"','"+origin+"','"+harga+"',"
-            + "'"+total+"','"+type+"','"+kendala+"'  )";
+            + "'"+tanggal+"','"+type+"','"+kendala+"'  )";
 
             PreparedStatement stat=conn.prepareStatement(sql);
             stat.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Data BERHASIL disimpan");
+            JOptionPane.showMessageDialog(null, "Data TERSIMPAN, silahkan masukan data PENJUAL");
 
             kosong();
             datatable();
+            
+            this.dispose();
+            new penjual().setVisible(true);
 
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Data GAGAL disimpan"+e);
@@ -403,6 +426,9 @@ public class barang extends javax.swing.JFrame {
     }//GEN-LAST:event_b_simpanActionPerformed
 
     private void b_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ubahActionPerformed
+        String tgl = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(tgl);
+        String tanggal = String.valueOf(fm.format(b_tgl.getDate()));
         try{
             String id = t_id.getText();
             String nama = t_nama.getText();
@@ -411,13 +437,13 @@ public class barang extends javax.swing.JFrame {
             String payment = cb_payment.getSelectedItem().toString();
             String origin = t_origin.getText();
             String harga = t_harga.getText();
-            String total = t_total.getText();
+       
             String type = cb_type.getSelectedItem().toString();
             String kendala = t_kendala.getText();
 
             String sql="UPDATE barang set nama='"+nama+"',jumlah='"+jumlah+"',"
             + "berat='"+berat+"',payment='"+payment+"',origin='"+origin+"',"
-            + "harga='"+harga+"',total='"+total+"',type='"+type+"',kendala='"+kendala+"'  where id='"+id+"'";
+            + "harga='"+harga+"',tanggal='"+tanggal+"',type='"+type+"',kendala='"+kendala+"'  where id='"+id+"'";
             PreparedStatement stat=conn.prepareStatement(sql);
             stat.executeUpdate();
 
@@ -485,8 +511,8 @@ public class barang extends javax.swing.JFrame {
         String harga = (String) tableModel.getValueAt(i, 6);
         t_harga.setText(harga);
         
-        String total = (String) tableModel.getValueAt(i, 7);
-        t_total.setText(total);
+        //String total = (String) tableModel.getValueAt(i, 7);
+        //t_total.setText(total);
 
         String type = (String) tableModel.getValueAt(i, 8);
         cb_type.setSelectedItem(type);
@@ -535,12 +561,14 @@ public class barang extends javax.swing.JFrame {
     private javax.swing.JButton b_hapus;
     private javax.swing.JButton b_kembali;
     private javax.swing.JButton b_simpan;
+    private com.toedter.calendar.JDateChooser b_tgl;
     private javax.swing.JButton b_ubah;
     private javax.swing.JComboBox<String> cb_payment;
     private javax.swing.JComboBox<String> cb_type;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -560,7 +588,6 @@ public class barang extends javax.swing.JFrame {
     private javax.swing.JTextArea t_kendala;
     private javax.swing.JTextField t_nama;
     private javax.swing.JTextField t_origin;
-    private javax.swing.JTextField t_total;
     private javax.swing.JTable tbl_user;
     // End of variables declaration//GEN-END:variables
 }

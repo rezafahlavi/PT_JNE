@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/unix/Documents/NetBeansProjects/PT_JNE/src/tampilan/login.java</file>
             <file>file:/C:/Users/unix/Documents/NetBeansProjects/PT_JNE/src/tampilan/menu.java</file>
-            <file>file:/C:/Users/unix/Documents/NetBeansProjects/PT_JNE/src/tampilan/user.java</file>
+            <file>file:/C:/Users/unix/Documents/NetBeansProjects/PT_JNE/src/tampilan/penjual.java</file>
+            <file>file:/C:/Users/unix/Documents/NetBeansProjects/PT_JNE/src/tampilan/penerima.java</file>
+            <file>file:/C:/Users/unix/Documents/NetBeansProjects/PT_JNE/src/tampilan/barang.java</file>
         </group>
     </open-files>
 </project-private>
