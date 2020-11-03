@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aac5ebcf-f7a6-4638-9daf-c54e0404e372">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     penugasan.`id` AS penugasan_id,
+     penugasan.`nama_barang` AS penugasan_nama_barang,
+     penugasan.`nama_penerima` AS penugasan_nama_penerima,
+     penugasan.`telp` AS penugasan_telp,
+     penugasan.`tgl_selesai` AS penugasan_tgl_selesai,
+     penugasan.`petugas` AS penugasan_petugas,
+     penugasan.`tindakan` AS penugasan_tindakan,
+     penugasan.`keterangan` AS penugasan_keterangan
+FROM
+     `penugasan` penugasan
+WHERE
+     tindakan = "Return"]]>
+	</queryString>
+	<field name="penugasan_id" class="java.lang.String"/>
+	<field name="penugasan_nama_barang" class="java.lang.String"/>
+	<field name="penugasan_nama_penerima" class="java.lang.String"/>
+	<field name="penugasan_telp" class="java.lang.String"/>
+	<field name="penugasan_tgl_selesai" class="java.sql.Date"/>
+	<field name="penugasan_petugas" class="java.lang.String"/>
+	<field name="penugasan_tindakan" class="java.lang.String"/>
+	<field name="penugasan_keterangan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement uuid="fcff3206-ed51-4238-826f-c5d69f7f52d0" x="-20" y="0" width="595" height="64"/>
+				<imageExpression><![CDATA["src/laporan/Logo_JNE.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="8bd336a1-a584-4c47-bdeb-a4860fba8ec9" style="Title" x="148" y="0" width="341" height="33" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Laporan Barang Return]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8bd336a1-a584-4c47-bdeb-a4860fba8ec9" style="Title" x="148" y="33" width="341" height="31" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[PT TIKI JALUR NUGRAHA EKAKURIRI]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="7541f6ca-dd97-4f9b-aed3-9b8a47219345" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="c413b2d9-cb3d-44b2-bfcc-3edcc55c3b3a" style="Column header" x="0" y="19" width="57" height="15"/>
+				<textElement/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c7c07736-8467-425d-b330-4a1d2b251011" style="Column header" x="57" y="19" width="59" height="15"/>
+				<textElement/>
+				<text><![CDATA[Barang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0c8b2500-38b2-404f-bfde-c6d503def8e9" style="Column header" x="122" y="19" width="69" height="15"/>
+				<textElement/>
+				<text><![CDATA[Penerima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3e2b9b0-0272-4acf-8d97-b75c7bcd6f0f" style="Column header" x="188" y="19" width="69" height="15"/>
+				<textElement/>
+				<text><![CDATA[No_Telp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="112f2298-bb52-4dc7-b3ed-0600b1f1e32f" style="Column header" x="257" y="19" width="78" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tgl_Tindakan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ebb2fbf8-1cf6-4995-9481-8b3b08cb8cb8" style="Column header" x="335" y="19" width="57" height="15"/>
+				<textElement/>
+				<text><![CDATA[Petugas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="491003dc-0eb6-4c03-b0d9-2e12e9614599" style="Column header" x="391" y="19" width="69" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tindakan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="41c4607a-93e5-499b-984e-67ef57b587c9" style="Column header" x="465" y="19" width="88" height="15"/>
+				<textElement/>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="ce826105-ca05-48b3-9f4c-4698d82e5441" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="a350e441-5253-4231-a15b-fd717e5cd130" style="Detail" x="0" y="0" width="57" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="359576b4-5b48-4fe9-aeda-aa1d47d9c1d6" style="Detail" x="57" y="0" width="59" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="adf78358-9948-4462-a683-f36510783392" style="Detail" x="122" y="0" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_nama_penerima}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e1cdc964-48f7-4b0c-9689-6a3ff7fa9143" style="Detail" x="188" y="0" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_telp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="95abcddd-9373-45d3-8cbb-b2c37ded83b5" style="Detail" x="257" y="0" width="78" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_tgl_selesai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d648bb29-3d4c-402c-baac-5ee20643b256" style="Detail" x="335" y="0" width="57" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_petugas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="91025059-7ea9-4aa9-803a-675b19672f88" style="Detail" x="391" y="0" width="69" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_tindakan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d22e014c-e0b8-4212-99b5-edf85af87bed" style="Detail" x="465" y="0" width="88" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{penugasan_keterangan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="138" splitType="Stretch">
+			<line>
+				<reportElement uuid="b7b41bae-0d37-4443-99df-88c52c36a2e3" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="9df91fc4-766c-4e1d-84b0-02d119f5503c" style="SubTitle" x="344" y="17" width="57" height="16" forecolor="#000000" backcolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="42ae148c-0f94-4fd1-a2c5-2f8c72402a90" style="Column header" x="411" y="17" width="142" height="16" forecolor="#000000"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE dd MMMMM yyyy",new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9df91fc4-766c-4e1d-84b0-02d119f5503c" style="SubTitle" x="401" y="33" width="100" height="16" forecolor="#000000" backcolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Koordinator CCC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9df91fc4-766c-4e1d-84b0-02d119f5503c" style="SubTitle" x="411" y="101" width="64" height="16" forecolor="#000000" backcolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(  Rinaldi  )]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0dffb3fd-1c5c-4e31-8efb-242acb654f6b" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}+" dari"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="51b185e0-5431-432e-a3d7-48fe192ef91e" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

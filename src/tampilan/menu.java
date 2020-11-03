@@ -1,19 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tampilan;
 
-/**
- *
- * @author unix
- */
+import java.io.File;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import koneksi.koneksi;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 public class menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form menu
-     */
+   
     public menu() {
         initComponents();
     }
@@ -130,6 +132,11 @@ public class menu extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 0, 255));
 
         jButton4.setText("PENUGASAN");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("LIST PENUGASAN");
@@ -163,7 +170,7 @@ public class menu extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("LAPORAN");
 
-        jButton5.setText("BARANG DALAM PENUGASAN");
+        jButton5.setText("PENUGASAN");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -171,34 +178,53 @@ public class menu extends javax.swing.JFrame {
         });
 
         jButton6.setText("BARANG KIRIM ULANG");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("BARANG RETURN");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("DATA PENERIMA");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("DATA PENJUAL");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton8)
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton9)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4)
+                .addContainerGap(763, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jButton5)
+                .addGap(18, 18, 18)
+                .addComponent(jButton6)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton8)
+                .addGap(37, 37, 37)
+                .addComponent(jButton9)
+                .addGap(53, 53, 53))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +277,18 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        try{
+            String namaFile = "src/laporan/penugasan.jasper";
+            Connection conn = new koneksi().GetConnection();
+            HashMap parameter = new HashMap();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -263,6 +300,71 @@ public class menu extends javax.swing.JFrame {
         this.dispose();
         new penerima().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+        new penugasan().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        try{
+            String namaFile = "src/laporan/kirim_ulang.jasper";
+            Connection conn = new koneksi().GetConnection();
+            HashMap parameter = new HashMap();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try{
+            String namaFile = "src/laporan/return.jasper";
+            Connection conn = new koneksi().GetConnection();
+            HashMap parameter = new HashMap();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        try{
+            String namaFile = "src/laporan/penerima.jasper";
+            Connection conn = new koneksi().GetConnection();
+            HashMap parameter = new HashMap();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        try{
+            String namaFile = "src/laporan/penjual.jasper";
+            Connection conn = new koneksi().GetConnection();
+            HashMap parameter = new HashMap();
+            File report_file = new File(namaFile);
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(report_file.getPath());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameter, conn);
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
