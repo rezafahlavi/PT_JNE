@@ -96,6 +96,7 @@ public class user extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("DATA USER");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
